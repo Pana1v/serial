@@ -1,4 +1,5 @@
 # Communication using PySerial and JSON PC <-> Microcontroller and Microcontroller <-> Microcontroller
+![image-1](https://github.com/Pana1v/serial/assets/63401208/37ca8318-e71b-43b3-809c-fec93fe98d80)
 
 ## PC <-> ESP8266 using JSON
 ![image](https://github.com/Pana1v/serial/assets/63401208/73b58804-774d-496a-95a6-e9dd493b238c)
@@ -7,6 +8,7 @@
 ![image](https://github.com/Pana1v/serial/assets/63401208/026f40b1-e201-470c-b9d9-f0d790a21e4c)
 
 ## ESP32 <-> Arduino MEGA (JSON)
+![image-1](https://github.com/Pana1v/serial/assets/63401208/0da445de-ffc1-43c6-8c6d-6af2c408900c)
 
 ### Setup
 
@@ -14,7 +16,6 @@
 2. Navigate to the project directory.
 3. Install the necessary dependencies (if any).
    
-![Screenshot](image-1.png)
 
 ### Connecting ESP8266 and Arduino MEGA
 
