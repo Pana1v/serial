@@ -1,8 +1,5 @@
 #include <ArduinoJson.h>
 
-const int MAX_JSON_SIZE = 100;
-char json_buffer[MAX_JSON_SIZE];
-
 int accumulated_x = 0; // Variable to accumulate x values
 
 void setup() {
@@ -11,12 +8,11 @@ void setup() {
 
 void loop() {
   if (Serial.available() > 0) {
-    // Read data into a fixed-size buffer
-    Serial.readBytesUntil('\n', json_buffer, MAX_JSON_SIZE);
+    String json_data = Serial.readStringUntil('\n');
 
     // Parse JSON data
-    DynamicJsonDocument doc(MAX_JSON_SIZE);
-    deserializeJson(doc, json_buffer);
+    DynamicJsonDocument doc(1024);
+    deserializeJson(doc, json_data);
 
     int x_value = doc["x"];
     int y_value = doc["y"];
@@ -27,15 +23,14 @@ void loop() {
 
     // Create response JSON data with accumulated x value
     JsonObject response = doc.to<JsonObject>();
-    response["x"] = accumulated_x;
-    response["y"] = y_value;
-    response["cmd"] = cmd_value;
+    response["accumulated_x"] = accumulated_x;
 
     // Convert response JSON data to string
-    serializeJson(response, json_buffer, MAX_JSON_SIZE);
+    String response_data;
+    serializeJson(response, response_data);
 
     // Send response back to PC
-    Serial.print(json_buffer);
+    Serial.print(response_data);
     Serial.print('\n');
 
     // Print received data and accumulated x value
